@@ -418,13 +418,12 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     private fun copyUriToCache(context: Context, uri: Uri): String {
-        val inputStream = context.contentResolver.openInputStream(uri)
-            ?: throw IllegalArgumentException("无法打开文件")
         val file = java.io.File(context.cacheDir, "temp_apk_${System.currentTimeMillis()}.apk")
-        file.outputStream().use { output ->
-            inputStream.copyTo(output)
-        }
-        inputStream.close()
+        context.contentResolver.openInputStream(uri)?.use { input ->
+            file.outputStream().use { output ->
+                input.copyTo(output)
+            }
+        } ?: throw IllegalArgumentException("无法打开文件")
         return file.absolutePath
     }
 

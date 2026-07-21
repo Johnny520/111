@@ -215,6 +215,12 @@ fun McpScreen(viewModel: MainViewModel) {
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.3f)
                         )
+                        Spacer(modifier = Modifier.height(12.dp))
+                        Text(
+                            "MCP 是一种让本应用连接外部工具的接口。默认地址指向本机服务，需要你自己在电脑或手机上启动对应的 MCP 服务后才能连接。",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.4f)
+                        )
                     }
                 }
             }

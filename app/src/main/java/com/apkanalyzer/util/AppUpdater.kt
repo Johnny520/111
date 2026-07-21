@@ -163,16 +163,7 @@ class AppUpdater(private val context: Context) {
             }
             context.startActivity(intent)
         } catch (e: Exception) {
-            // FileProvider 失败，尝试 file:// scheme
-            try {
-                val intent = android.content.Intent(android.content.Intent.ACTION_VIEW).apply {
-                    setDataAndType(android.net.Uri.fromFile(file), "application/vnd.android.package-archive")
-                    addFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK)
-                }
-                context.startActivity(intent)
-            } catch (_: Exception) {
-                android.widget.Toast.makeText(context, "无法启动安装，请手动安装: ${file.absolutePath}", android.widget.Toast.LENGTH_LONG).show()
-            }
+            android.widget.Toast.makeText(context, "无法自动安装，请前往下载目录手动安装更新", android.widget.Toast.LENGTH_LONG).show()
         }
     }
 

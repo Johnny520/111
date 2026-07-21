@@ -5,6 +5,7 @@ import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
@@ -47,7 +48,15 @@ class MainActivity : ComponentActivity() {
 
     private val requestPermissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions()
-    ) { }
+    ) { results ->
+        if (results.isNotEmpty() && results.values.all { !it }) {
+            Toast.makeText(
+                this,
+                "需要存储权限才能读取文件，请在系统设置中开启",
+                Toast.LENGTH_LONG
+            ).show()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -87,6 +96,8 @@ class MainActivity : ComponentActivity() {
 fun MainApp(viewModel: MainViewModel = viewModel()) {
     val navController = rememberNavController()
     val items = listOf(
+        Screen.Analyzer,
+        Screen.Pollinations,
         Screen.AiAssistant,
         Screen.Mcp,
         Screen.Settings,
@@ -128,7 +139,7 @@ fun MainApp(viewModel: MainViewModel = viewModel()) {
     ) { innerPadding ->
         NavHost(
             navController = navController,
-            startDestination = Screen.AiAssistant.route,
+            startDestination = Screen.Analyzer.route,
             modifier = Modifier.padding(innerPadding)
         ) {
             composable(Screen.Analyzer.route) { AnalyzerScreen(viewModel) }

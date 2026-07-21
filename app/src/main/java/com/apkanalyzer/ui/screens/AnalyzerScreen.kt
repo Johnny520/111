@@ -85,11 +85,24 @@ fun AnalyzerScreen(viewModel: MainViewModel) {
                 }
                 error != null -> {
                     Column(
-                        modifier = Modifier.align(Alignment.Center),
+                        modifier = Modifier.align(Alignment.Center).padding(horizontal = 24.dp),
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Icon(Icons.Default.Warning, contentDescription = null, tint = MaterialTheme.colorScheme.error)
-                        Text("分析失败: $error", color = MaterialTheme.colorScheme.error)
+                        Spacer(modifier = Modifier.height(8.dp))
+                        Text("无法分析这个文件", color = MaterialTheme.colorScheme.error)
+                        Spacer(modifier = Modifier.height(4.dp))
+                        Text(
+                            "请确认它是一份有效的 APK 安装包（扩展名为 .apk）。",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
+                        )
+                        Spacer(modifier = Modifier.height(8.dp))
+                        Text(
+                            error,
+                            style = MaterialTheme.typography.labelSmall,
+                            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.4f)
+                        )
                     }
                 }
                 apkInfo != null -> {
@@ -97,12 +110,18 @@ fun AnalyzerScreen(viewModel: MainViewModel) {
                 }
                 else -> {
                     Column(
-                        modifier = Modifier.align(Alignment.Center),
+                        modifier = Modifier.align(Alignment.Center).padding(horizontal = 24.dp),
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Icon(Icons.Default.FileOpen, contentDescription = null, modifier = Modifier.size(64.dp))
                         Spacer(modifier = Modifier.height(16.dp))
-                        Text("点击右下角按钮选择APK文件")
+                        Text("点击右下角按钮选择 APK 文件")
+                        Spacer(modifier = Modifier.height(8.dp))
+                        Text(
+                            "APK 是安卓应用的安装包（类似电脑上的 .exe）。你可以从手机「文件管理」里找到已下载的 .apk，或从浏览器下载的安装包里选择。",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
+                        )
                     }
                 }
             }

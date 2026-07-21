@@ -127,8 +127,8 @@ fun PollinationsScreen(viewModel: MainViewModel) {
                 onClick = {
                     viewModel.generateImage(
                         prompt = prompt,
-                        width = width.toIntOrNull() ?: 1024,
-                        height = height.toIntOrNull() ?: 1024,
+                        width = (width.toIntOrNull() ?: 1024).coerceIn(256, 2048),
+                        height = (height.toIntOrNull() ?: 1024).coerceIn(256, 2048),
                         seed = seed.toIntOrNull()
                     )
                 },
@@ -143,7 +143,16 @@ fun PollinationsScreen(viewModel: MainViewModel) {
             }
 
             if (error != null) {
-                Text("错误: $error", color = MaterialTheme.colorScheme.error)
+                Text(
+                    "图像生成失败，请稍后重试，或换一个提示词再试。",
+                    color = MaterialTheme.colorScheme.error
+                )
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(
+                    error,
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.4f)
+                )
             }
 
             imageUrl?.let { url ->
