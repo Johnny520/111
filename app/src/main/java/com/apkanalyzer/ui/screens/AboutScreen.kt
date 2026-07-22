@@ -318,40 +318,47 @@ private fun ClickableInfoRow(icon: ImageVector, label: String, value: String, on
     }
 }
 
-/** GitHub 品牌图标（"G" 方标） */
+/** GitHub 品牌图标（Octocat 章鱼猫） */
 private val GithubIcon = ImageVector.Builder(
     name = "GitHub",
     defaultWidth = 24.dp,
     defaultHeight = 24.dp,
-    viewportWidth = 24f,
-    viewportHeight = 24f
+    viewportWidth = 98f,
+    viewportHeight = 96f
 ).apply {
     path(
         fillAlpha = 1f,
         strokeAlpha = 0f
     ) {
-        // 外框 — 圆角方形
-        moveTo(12f, 2f)
-        cubicTo(6.48f, 2f, 2f, 6.48f, 2f, 12f)
-        cubicTo(2f, 17.52f, 6.48f, 22f, 12f, 22f)
-        cubicTo(17.52f, 22f, 22f, 17.52f, 22f, 12f)
-        cubicTo(22f, 6.48f, 17.52f, 2f, 12f, 2f)
-        close()
-        // G 字母
-        moveTo(16.5f, 12f)
-        cubicTo(16.5f, 14.48f, 14.48f, 16.5f, 12f, 16.5f)
-        cubicTo(9.52f, 16.5f, 7.5f, 14.48f, 7.5f, 12f)
-        cubicTo(7.5f, 9.52f, 9.52f, 7.5f, 12f, 7.5f)
-        cubicTo(13.1f, 7.5f, 14.1f, 7.9f, 14.85f, 8.55f)
-        lineTo(13.75f, 9.65f)
-        cubicTo(13.3f, 9.2f, 12.7f, 8.95f, 12f, 8.95f)
-        cubicTo(10.32f, 8.95f, 8.95f, 10.32f, 8.95f, 12f)
-        cubicTo(8.95f, 13.68f, 10.32f, 15.05f, 12f, 15.05f)
-        cubicTo(13.53f, 15.05f, 14.8f, 13.9f, 14.98f, 12.45f)
-        lineTo(12f, 12.45f)
-        lineTo(12f, 11f)
-        lineTo(16.5f, 11f)
-        lineTo(16.5f, 12f)
+        moveTo(41.4395f, 69.3848f)
+        cubicTo(28.8066f, 67.8535f, 19.9062f, 58.7617f, 19.9062f, 46.9902f)
+        cubicTo(19.9062f, 42.2051f, 21.6289f, 37.0371f, 24.5f, 33.5918f)
+        cubicTo(23.2559f, 30.4336f, 23.4473f, 23.7344f, 24.8828f, 20.959f)
+        cubicTo(28.7109f, 20.4805f, 33.8789f, 22.4902f, 36.9414f, 25.2656f)
+        cubicTo(40.5781f, 24.1172f, 44.4062f, 23.543f, 49.0957f, 23.543f)
+        cubicTo(53.7852f, 23.543f, 57.6133f, 24.1172f, 61.0586f, 25.1699f)
+        cubicTo(64.0254f, 22.4902f, 69.2891f, 20.4805f, 73.1172f, 20.959f)
+        cubicTo(74.457f, 23.543f, 74.6484f, 30.2422f, 73.4043f, 33.4961f)
+        cubicTo(76.4668f, 37.1328f, 78.0937f, 42.0137f, 78.0937f, 46.9902f)
+        cubicTo(78.0937f, 58.7617f, 69.1934f, 67.6621f, 56.3691f, 69.2891f)
+        cubicTo(59.623f, 71.3945f, 61.8242f, 75.9883f, 61.8242f, 81.252f)
+        lineTo(61.8242f, 91.2051f)
+        cubicTo(61.8242f, 94.0762f, 64.2168f, 95.7031f, 67.0879f, 94.5547f)
+        cubicTo(84.4102f, 87.9512f, 98f, 70.6289f, 98f, 49.1914f)
+        cubicTo(98f, 22.1074f, 75.9883f, 0f, 48.9043f, 0f)
+        cubicTo(21.8203f, 0f, 0f, 22.1074f, 0f, 49.1914f)
+        cubicTo(0f, 70.4375f, 13.4941f, 88.0469f, 31.6777f, 94.6504f)
+        cubicTo(34.2617f, 95.6074f, 36.75f, 93.8848f, 36.75f, 91.3008f)
+        lineTo(36.75f, 83.6445f)
+        cubicTo(35.4102f, 84.2188f, 33.6875f, 84.6016f, 32.1562f, 84.6016f)
+        cubicTo(25.8398f, 84.6016f, 22.1074f, 81.1563f, 19.4277f, 74.7441f)
+        cubicTo(18.375f, 72.1602f, 17.2266f, 70.6289f, 15.0254f, 70.3418f)
+        cubicTo(13.877f, 70.2461f, 13.4941f, 69.7676f, 13.4941f, 69.1934f)
+        cubicTo(13.4941f, 68.0449f, 15.4082f, 67.1836f, 17.3223f, 67.1836f)
+        cubicTo(20.0977f, 67.1836f, 22.4902f, 68.9063f, 24.9785f, 72.4473f)
+        cubicTo(26.8926f, 75.2227f, 28.9023f, 76.4668f, 31.2949f, 76.4668f)
+        cubicTo(33.6875f, 76.4668f, 35.2187f, 75.6055f, 37.4199f, 73.4043f)
+        cubicTo(39.0469f, 71.7773f, 40.291f, 70.3418f, 41.4395f, 69.3848f)
         close()
     }
 }.build()
