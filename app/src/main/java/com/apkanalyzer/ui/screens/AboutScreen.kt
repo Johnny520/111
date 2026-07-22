@@ -17,6 +17,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -85,11 +86,19 @@ fun AboutScreen() {
                 title = "开发者信息"
             ) {
                 InfoRow("作者", "文强哥 (Johnny520)")
-                ClickableInfoRow("官网", "johnny520.github.io/Johnny/") {
+                ClickableInfoRow(
+                    icon = Icons.Default.Language,
+                    label = "官网",
+                    value = "johnny520.github.io/Johnny/"
+                ) {
                     val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://johnny520.github.io/Johnny/"))
                     context.startActivity(intent)
                 }
-                ClickableInfoRow("GitHub", "github.com/Johnny520") {
+                ClickableInfoRow(
+                    icon = Icons.Default.Code,
+                    label = "GitHub",
+                    value = "github.com/Johnny520"
+                ) {
                     val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/Johnny520"))
                     context.startActivity(intent)
                 }
@@ -278,24 +287,32 @@ private fun InfoRow(label: String, value: String) {
 }
 
 @Composable
-private fun ClickableInfoRow(label: String, value: String, onClick: () -> Unit) {
+private fun ClickableInfoRow(icon: ImageVector, label: String, value: String, onClick: () -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 4.dp)
+            .clickable { onClick() }
+            .padding(vertical = 4.dp),
+        verticalAlignment = Alignment.CenterVertically
     ) {
+        Icon(
+            icon,
+            contentDescription = label,
+            modifier = Modifier.size(18.dp),
+            tint = MaterialTheme.colorScheme.primary
+        )
+        Spacer(modifier = Modifier.width(8.dp))
         Text(
             label,
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
-            modifier = Modifier.width(60.dp)
+            modifier = Modifier.width(52.dp)
         )
         Text(
             value,
             style = MaterialTheme.typography.bodySmall,
             fontWeight = FontWeight.Medium,
-            color = MaterialTheme.colorScheme.primary,
-            modifier = Modifier.clickable { onClick() }
+            color = MaterialTheme.colorScheme.primary
         )
     }
 }
